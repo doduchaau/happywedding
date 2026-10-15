@@ -1,0 +1,315 @@
+/* ==========================================================================
+   BLUSH COUTURE - CHAPTER VII PART 3: NIGHT-SKY FINALE & FIREWORKS
+   ========================================================================== */
+.night-sky-section {
+  position: relative;
+  min-height: 250vh; /* Pinned ScrollTrigger scrub distance */
+  padding: 0;
+  margin: 0;
+  background-color: var(--night);
+}
+
+.night-sky-viewport {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #F3D9D4 0%, #3A1F26 50%, #1E1218 100%);
+  transition: background 0.1s linear;
+  will-change: background;
+}
+
+/* Background Stars Canvas */
+.night-stars-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 1;
+}
+
+/* Drifting Thin Clouds */
+.night-cloud {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  background: rgba(251, 244, 238, 0.12);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.night-cloud-1 {
+  width: 450px;
+  height: 120px;
+  top: 25%;
+  left: -100px;
+  animation: cloudDrift 28s linear infinite alternate;
+}
+
+.night-cloud-2 {
+  width: 550px;
+  height: 140px;
+  top: 40%;
+  right: -120px;
+  animation: cloudDrift 34s linear infinite alternate-reverse;
+}
+
+@keyframes cloudDrift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(80px); }
+}
+
+/* Rising Golden Moon */
+.night-moon {
+  position: absolute;
+  top: 10%;
+  right: 12%;
+  width: clamp(72px, 10vw, 100px);
+  height: clamp(72px, 10vw, 100px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #FFFDF5 0%, #F4E8D1 50%, #D4AF7A 100%);
+  box-shadow: 0 0 50px rgba(212, 175, 122, 0.65), 0 0 100px rgba(212, 175, 122, 0.25);
+  opacity: 0;
+  transform: translateY(80px);
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Floating Wish Lanterns Container */
+.night-lanterns-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.sky-lantern-item {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  will-change: transform, opacity;
+  animation: lanternSway 4.5s ease-in-out infinite alternate;
+}
+
+@keyframes lanternSway {
+  0% { transform: translateX(-6px) rotate(-2deg); }
+  100% { transform: translateX(6px) rotate(2deg); }
+}
+
+.lantern-glow-body {
+  width: 38px;
+  height: 52px;
+  border-radius: 8px 8px 12px 12px;
+  background: radial-gradient(circle at 50% 65%, #FFF2CC 15%, #F4A261 65%, #E76F51 100%);
+  box-shadow: 0 0 20px rgba(244, 162, 97, 0.8), 0 0 35px rgba(212, 175, 122, 0.5);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sky-lantern-item:hover .lantern-glow-body,
+.sky-lantern-item.flaring .lantern-glow-body {
+  transform: scale(1.18);
+  box-shadow: 0 0 35px rgba(255, 230, 150, 1), 0 0 60px rgba(244, 162, 97, 0.9);
+}
+
+.lantern-wish-tag {
+  margin-top: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--pale-gold);
+  background: rgba(30, 18, 24, 0.75);
+  border: 1px solid rgba(212, 175, 122, 0.5);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.sky-lantern-item:hover .lantern-wish-tag,
+.sky-lantern-item.flaring .lantern-wish-tag {
+  opacity: 1;
+  transform: scale(1.1);
+  background: rgba(58, 31, 38, 0.9);
+  color: #FFFFFF;
+}
+
+/* Fireworks Canvas */
+.night-fireworks-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Centered Finale Typography & Celebration Controls */
+.night-finale-content {
+  position: relative;
+  z-index: 6;
+  text-align: center;
+  padding: 2rem;
+  max-width: 800px;
+  width: 100%;
+}
+
+.night-finale-line {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4.2rem);
+  font-weight: 300;
+  letter-spacing: var(--tracking-tight);
+  color: var(--ivory);
+  line-height: 1.25;
+  margin-bottom: 0.85rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s var(--ease-editorial), transform 1s var(--ease-editorial);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.night-finale-line.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.night-finale-line:nth-child(2) {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.night-finale-line:nth-child(3) {
+  font-family: var(--font-script);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  color: var(--rose-gold);
+  margin-top: 1.25rem;
+}
+
+/* Celebration Controls */
+.night-congrats-panel {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s var(--ease-editorial), transform 0.9s var(--ease-editorial);
+}
+
+.night-congrats-panel.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.night-congrats-btn {
+  background: var(--paper);
+  color: var(--wine);
+  border: 1px solid var(--champagne);
+  font-size: 0.9rem;
+  letter-spacing: var(--tracking-wider);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), var(--glow-gold);
+}
+
+.night-congrats-btn:hover {
+  background: #FFFFFF;
+  color: var(--wine);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.night-counter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: rgba(251, 244, 238, 0.7);
+  letter-spacing: var(--tracking-wide);
+}
+
+.night-counter-pill span:first-child {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--champagne);
+}
+
+/* ==========================================================================
+   EDITORIAL LUXURY FOOTER
+   ========================================================================== */
+.editorial-footer {
+  position: relative;
+  background-color: var(--night-deep);
+  color: var(--ivory);
+  padding: 6rem 1.5rem 4rem;
+  text-align: center;
+  overflow: hidden;
+  border-top: 1px solid rgba(212, 175, 122, 0.35);
+  z-index: 10;
+}
+
+.footer-monogram {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--champagne);
+  letter-spacing: 0.08em;
+  margin-bottom: 1.25rem;
+}
+
+.footer-credit {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 300;
+  letter-spacing: var(--tracking-wide);
+  color: rgba(251, 244, 238, 0.7);
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+}
+
+.footer-back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid rgba(212, 175, 122, 0.4);
+  color: var(--champagne);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  padding: 0.65rem 1.5rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.footer-back-to-top:hover {
+  background: rgba(212, 175, 122, 0.15);
+  color: var(--pale-gold);
+  border-color: var(--pale-gold);
+  transform: translateY(-2px);
+}

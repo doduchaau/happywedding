@@ -1,0 +1,410 @@
+/* ==========================================================================
+   BLUSH COUTURE - CHAPTER V: PARCHMENT CONTRACT & WAX SEAL
+   ========================================================================== */
+.contract-section {
+  position: relative;
+  background-color: var(--wine);
+  color: var(--ivory);
+  padding: 8rem 1.5rem;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .contract-section {
+    padding: 10rem 3rem;
+  }
+}
+
+/* Background Watermark Roman Numeral "V" */
+.contract-watermark {
+  position: absolute;
+  top: 15%;
+  right: 8%;
+  font-family: var(--font-display);
+  font-size: clamp(12rem, 30vw, 36rem);
+  font-weight: 300;
+  color: rgba(212, 175, 122, 0.045);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  line-height: 1;
+}
+
+.contract-container {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contract-swans-crest {
+  width: 140px;
+  height: 70px;
+  margin: 0 auto 1.5rem;
+  filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.45)) drop-shadow(0 0 20px rgba(240, 199, 94, 0.35));
+  animation: swanFloat 4.5s ease-in-out infinite alternate;
+}
+
+.contract-inner-xi {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: min(45vw, 300px);
+  color: var(--champagne);
+  opacity: 0.055;
+  pointer-events: none;
+  user-select: none;
+  font-family: serif;
+  font-weight: 700;
+  line-height: 1;
+  z-index: 0;
+}
+
+.contract-header-editorial {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.contract-kicker {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--champagne);
+  margin-bottom: 0.85rem;
+  display: block;
+}
+
+.contract-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 400;
+  color: var(--ivory);
+  letter-spacing: var(--tracking-tight);
+}
+
+.contract-subtitle-text {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: rgba(251, 244, 238, 0.65);
+  max-width: 600px;
+  margin: 1rem auto 0;
+  font-weight: 300;
+}
+
+/* Parchment Document Styling */
+.contract-parchment {
+  position: relative;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 8px;
+  padding: clamp(2rem, 5vw, 4.5rem);
+  box-shadow: 0 30px 80px rgba(10, 5, 8, 0.5), var(--glow-gold);
+  border: 1px solid rgba(212, 175, 122, 0.5);
+}
+
+/* Thin Gold Double Border */
+.contract-parchment::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(212, 175, 122, 0.45);
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+.contract-doc-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.contract-embossed-monogram {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--champagne);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+.contract-doc-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(
+    115deg,
+    #4A121E 0%,
+    #731B2E 25%,
+    #A6682E 50%,
+    #731B2E 75%,
+    #4A121E 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: foilShimmer 9s linear infinite;
+}
+
+.contract-doc-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+/* Clauses List */
+.contract-clauses-box {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 3.5rem;
+}
+
+.contract-clause-line {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.8;
+  color: var(--ink);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(212, 175, 122, 0.2);
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  transition: opacity 0.5s ease;
+}
+
+.contract-clause-line:last-child {
+  border-bottom: none;
+}
+
+.clause-bullet {
+  color: var(--champagne);
+  font-size: 0.85rem;
+}
+
+/* Signature Pads Area */
+.contract-signatures-area {
+  position: relative;
+  z-index: 1;
+  margin-top: 2rem;
+  padding-top: 2.5rem;
+  border-top: 1px dashed rgba(212, 175, 122, 0.45);
+}
+
+.signature-pads-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 650px) {
+  .signature-pads-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+.signature-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.signature-party-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+}
+
+.signature-canvas-box {
+  position: relative;
+  height: 140px;
+  background: rgba(251, 244, 238, 0.45);
+  border: 1px solid rgba(212, 175, 122, 0.45);
+  border-radius: 4px;
+  overflow: hidden;
+  touch-action: none; /* Prevents scroll while drawing */
+}
+
+.signature-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: crosshair;
+}
+
+.signature-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-script);
+  font-size: 1.8rem;
+  color: rgba(201, 139, 139, 0.35);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.signature-clear-btn {
+  align-self: flex-end;
+  margin-top: 0.5rem;
+  background: transparent;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: var(--tracking-wide);
+  color: var(--ink-muted);
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+}
+
+.signature-clear-btn:hover {
+  color: var(--rose-gold);
+}
+
+/* Wax Seal Press Element Container */
+.contract-wax-seal-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem auto 0.5rem;
+  min-height: 95px;
+  z-index: 10;
+}
+
+.contract-wax-seal {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #A83248, #6B1727);
+  box-shadow: 0 12px 30px rgba(107, 23, 39, 0.5), inset 0 3px 6px rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--champagne);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.contract-wax-seal.is-pressed {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.wax-seal-text-title {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking-wider);
+  color: var(--pale-gold);
+  text-transform: uppercase;
+}
+
+.wax-seal-text-monogram {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--pale-gold);
+  line-height: 1;
+}
+
+/* Post-Signing Completion Box */
+.contract-done-box {
+  margin-top: 1.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+.contract-done-message {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  position: relative;
+}
+
+.contract-done-message::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--rose-gold), var(--champagne), var(--pale-gold));
+}
+
+.contract-actions-group {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#contract-download-btn {
+  background: linear-gradient(135deg, #B01E3A, #8B1A24);
+  color: #FFFDFB;
+  border: 1px solid rgba(240, 199, 94, 0.5);
+  box-shadow: 0 4px 15px rgba(139, 26, 36, 0.35);
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+#contract-download-btn:hover {
+  background: linear-gradient(135deg, #C52242, #991C28);
+  box-shadow: 0 6px 22px rgba(139, 26, 36, 0.5);
+  transform: translateY(-2px);
+}
+
+#contract-manual-seal-btn {
+  background: linear-gradient(135deg, #B01E3A, #8B1A24);
+  color: #FFFDFB;
+  border: 1px solid rgba(240, 199, 94, 0.5);
+  box-shadow: 0 4px 15px rgba(139, 26, 36, 0.35);
+  font-weight: 600;
+  animation: pulseButton 2s infinite ease-in-out;
+  cursor: pointer;
+}
+
+@keyframes pulseButton {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); box-shadow: 0 6px 20px rgba(176, 30, 58, 0.5); }
+}
+
+/* Screen Shake Effect */
+@keyframes contractShake {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-6px, 4px); }
+  40% { transform: translate(6px, -4px); }
+  60% { transform: translate(-4px, 2px); }
+  80% { transform: translate(4px, -2px); }
+}
+
+.screen-shake {
+  animation: contractShake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}

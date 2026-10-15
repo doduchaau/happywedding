@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blush Couture • Thúy Hiền & Trung Kiên</title>
+    <meta
+      name="description"
+      content="Món quà cưới độc bản phong cách điện ảnh dành tặng cô dâu Thúy Hiền và chú rể Trung Kiên."
+    />
+
+    <!-- Google Fonts with Vietnamese subset -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Pinyon+Script&subset=vietnamese&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.85em%22 font-size=%2280%22 fill=%22%23D4AF7A%22 font-family=%22serif%22 font-style=%22italic%22>H&amp;K</text></svg>"
+    />
+  </head>
+  <body class="scroll-locked">
+    <!-- Film Grain Overlay -->
+    <div class="film-grain" aria-hidden="true"></div>
+
+    <!-- Top Gold Scroll Progress Hairline -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Fixed Slim Chapter Indicator -->
+    <div class="chapter-nav-indicator" id="chapter-nav-indicator" aria-hidden="true">
+      <span class="chapter-nav-numeral" id="chapter-nav-num">I</span>
+      <span class="chapter-nav-divider"></span>
+      <span class="chapter-nav-title" id="chapter-nav-title">Lời mở đầu</span>
+    </div>
+
+    <!-- Floating Monogram in Header -->
+    <div class="header-monogram" id="header-monogram" aria-hidden="true">H &amp; K</div>
+
+    <!-- Chapter 0: Preloader Screen -->
+    <div id="loader-mount"></div>
+
+    <!-- Chapter I: 3D Sealed Envelope Intro -->
+    <div id="intro-mount"></div>
+
+    <!-- Main Editorial Content -->
+    <main id="app">
+      <!-- Chapter II: Hero Section -->
+      <div id="hero-section-mount"></div>
+
+      <!-- Chapter II: Dark Wine Cinematic Countdown -->
+      <div id="countdown-section-mount"></div>
+
+      <!-- Chapter III: Scroll-Scrubbed Editorial Letter -->
+      <div id="letter-section-mount"></div>
+
+      <!-- Chapter IV: Horizontal Gallery "Khoảnh khắc" -->
+      <div id="gallery-section-mount"></div>
+
+      <!-- Chapter V: Parchment Marriage Contract & Wax Seal -->
+      <div id="contract-section-mount"></div>
+
+      <!-- Chapter VI: Pearl & Glass Capsule Wish Pit -->
+      <div id="wish-pit-section-mount"></div>
+
+      <!-- Chapter VII: Part 1 - Gold Foil Scratch Cards -->
+      <div id="scratch-cards-section-mount"></div>
+
+      <!-- Chapter VII: Part 2 - Cinema Video (Optional) -->
+      <div id="video-section-mount"></div>
+
+      <!-- Venue Information (Optional) -->
+      <div id="venue-section-mount"></div>
+
+      <!-- Chapter VII: Part 3 - Night-Sky Finale with Stars, Lanterns & Fireworks -->
+      <div id="night-sky-section-mount"></div>
+
+      <!-- Editorial Footer -->
+      <div id="footer-mount"></div>
+    </main>
+
+    <!-- Floating Controls Bar -->
+    <div class="floating-actions-bar">
+      <!-- Quality Tier Accessibility Toggle -->
+      <button
+        type="button"
+        id="effects-toggle-btn"
+        class="reduce-effects-btn"
+        aria-label="Giảm hiệu ứng đồ họa"
+      >
+        Tiết kiệm hiệu ứng
+      </button>
+
+      <!-- Music Toggle with Refined Waveform -->
+      <button
+        type="button"
+        id="music-toggle-btn"
+        class="music-toggle-btn is-muted"
+        aria-label="Bật/Tắt âm thanh"
+        title="Bật/Tắt âm thanh"
+      >
+        <div class="equalizer-icon" id="equalizer-icon" aria-hidden="true">
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-bar"></span>
+          <span class="eq-mute-line"></span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Main Script Entry -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

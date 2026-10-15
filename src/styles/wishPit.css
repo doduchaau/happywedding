@@ -1,0 +1,198 @@
+/* ==========================================================================
+   BLUSH COUTURE - CHAPTER VI: PEARL & GLASS CAPSULE WISH PIT
+   ========================================================================== */
+.wish-pit-section {
+  position: relative;
+  background-color: var(--ivory);
+  padding: 8rem 1.5rem;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .wish-pit-section {
+    padding: 10rem 3rem;
+  }
+}
+
+/* Background Watermark Roman Numeral "VI" */
+.wish-pit-watermark {
+  position: absolute;
+  top: 15%;
+  left: 6%;
+  font-family: var(--font-display);
+  font-size: clamp(12rem, 30vw, 36rem);
+  font-weight: 300;
+  color: rgba(212, 175, 122, 0.045);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  line-height: 1;
+}
+
+.wish-pit-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.wish-pit-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.wish-pit-kicker {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--champagne);
+  margin-bottom: 0.85rem;
+  display: block;
+}
+
+.wish-pit-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: var(--tracking-tight);
+}
+
+.wish-pit-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  color: var(--ink-muted);
+  max-width: 620px;
+  margin: 1rem auto 0;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* Elegant Glass Vessel Stage */
+.wish-pit-glass-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(420px, 60vh, 560px);
+  background: rgba(255, 253, 251, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 122, 0.45);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(43, 26, 30, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  margin-bottom: 2rem;
+  touch-action: pan-y; /* Allow page vertical scroll outside direct dragging */
+}
+
+.wish-pit-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.wish-pit-hint-overlay {
+  position: absolute;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 253, 251, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 122, 0.35);
+  padding: 0.45rem 1.25rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--champagne);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Controls Bar */
+.wish-pit-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* Capsule Wish Expanded Card Modal */
+.capsule-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100005;
+  background: rgba(30, 18, 24, 0.8);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease-editorial);
+}
+
+.capsule-modal.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.capsule-modal-card {
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  background: var(--paper);
+  border: 1px solid var(--champagne);
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35), var(--glow-gold);
+  transform: scale(0.92);
+  transition: transform 0.4s var(--ease-editorial);
+}
+
+.capsule-modal.is-open .capsule-modal-card {
+  transform: scale(1);
+}
+
+.capsule-modal-kicker {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--champagne);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.capsule-modal-wish {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.45;
+  margin-bottom: 2rem;
+}
+
+.capsule-modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.capsule-modal-close-btn:hover {
+  color: var(--ink);
+}

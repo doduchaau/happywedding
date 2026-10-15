@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blush Couture • Style Tile & Design System</title>
+    
+    <!-- Google Fonts with Vietnamese subset -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Pinyon+Script&subset=vietnamese&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/src/styles/theme.css" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+
+    <style>
+      .style-tile-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem 8rem;
+      }
+      .style-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(212, 175, 122, 0.35);
+      }
+      .style-header h1 {
+        font-family: var(--font-display);
+        font-size: 3.5rem;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.5rem;
+      }
+      .style-header p {
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        letter-spacing: var(--tracking-wider);
+        text-transform: uppercase;
+        color: var(--champagne);
+      }
+      .style-section {
+        margin-bottom: 5rem;
+      }
+      .style-section-title {
+        font-family: var(--font-body);
+        font-size: 0.8rem;
+        letter-spacing: var(--tracking-widest);
+        text-transform: uppercase;
+        color: var(--champagne);
+        margin-bottom: 1.75rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .style-section-title::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: rgba(212, 175, 122, 0.3);
+      }
+      
+      /* Swatches */
+      .swatches-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 1.5rem;
+      }
+      .swatch-card {
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--paper);
+        border: 1px solid rgba(212, 175, 122, 0.35);
+        box-shadow: var(--shadow-subtle);
+      }
+      .swatch-color {
+        height: 90px;
+        width: 100%;
+        position: relative;
+      }
+      .swatch-info {
+        padding: 0.75rem;
+        font-size: 0.75rem;
+      }
+      .swatch-name {
+        font-weight: 600;
+        margin-bottom: 0.2rem;
+        color: var(--ink);
+      }
+      .swatch-hex {
+        color: var(--ink-muted);
+        font-family: monospace;
+      }
+
+      /* Type Scale Demo */
+      .type-demo-box {
+        background: var(--paper);
+        padding: 2.5rem;
+        border-radius: 12px;
+        border: 1px solid rgba(212, 175, 122, 0.3);
+        box-shadow: var(--shadow-subtle);
+      }
+      .type-row {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(212, 175, 122, 0.15);
+      }
+      .type-row:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+      .type-meta {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-wider);
+        color: var(--champagne);
+        margin-bottom: 0.4rem;
+      }
+      .type-sample-display-xl {
+        font-family: var(--font-display);
+        font-size: 3.8rem;
+        line-height: 1.1;
+        font-weight: 400;
+      }
+      .type-sample-display-lg {
+        font-family: var(--font-display);
+        font-size: 2.6rem;
+        line-height: 1.2;
+        font-style: italic;
+      }
+      .type-sample-script {
+        font-family: var(--font-script);
+        font-size: 3.2rem;
+        color: var(--rose-gold);
+        line-height: 1.2;
+      }
+      .type-sample-body {
+        font-family: var(--font-body);
+        font-size: 1.05rem;
+        line-height: 1.75;
+        max-width: 750px;
+        font-weight: 300;
+      }
+
+      /* Frames Grid */
+      .frames-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 3rem;
+        align-items: center;
+      }
+      .frame-demo-item {
+        text-align: center;
+      }
+      .frame-preview {
+        width: 220px;
+        height: 290px;
+        margin: 0 auto 1.25rem;
+        background: linear-gradient(135deg, #F3D9D4, #E8B4B8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .frame-preview.oval {
+        width: 220px;
+        height: 220px;
+      }
+      .frame-monogram {
+        font-family: var(--font-display);
+        font-size: 2.5rem;
+        font-style: italic;
+        color: var(--wine);
+        opacity: 0.85;
+      }
+
+      /* Glass Panels Demo */
+      .glass-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      @media (max-width: 768px) {
+        .glass-grid { grid-template-columns: 1fr; }
+      }
+      .glass-showcase {
+        padding: 3rem;
+        border-radius: 16px;
+      }
+      .glass-bg-wrapper {
+        position: relative;
+        padding: 2.5rem;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+      .light-bg {
+        background: radial-gradient(circle at 30% 30%, #F3D9D4, #FBF4EE 70%);
+      }
+      .dark-bg {
+        background: radial-gradient(circle at 30% 30%, #3A1F26, #1E1218 80%);
+      }
+
+      /* Cursor Interaction Zones */
+      .cursor-zones-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1.25rem;
+      }
+      .cursor-zone {
+        height: 120px;
+        border: 1px dashed rgba(212, 175, 122, 0.6);
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-wider);
+        background: rgba(255, 253, 251, 0.5);
+        transition: background 0.3s ease, border-color 0.3s ease;
+      }
+      .cursor-zone:hover {
+        background: rgba(212, 175, 122, 0.15);
+        border-color: var(--champagne);
+      }
+
+      /* Easing Demo */
+      .easing-box {
+        background: var(--paper);
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid rgba(212, 175, 122, 0.3);
+      }
+      .easing-track {
+        height: 36px;
+        background: rgba(212, 175, 122, 0.1);
+        border-radius: 18px;
+        margin-bottom: 1.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .easing-ball {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--champagne);
+        box-shadow: var(--glow-gold);
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .easing-track:nth-child(1) .easing-ball {
+        animation: easeDemo1 3s cubic-bezier(0.76, 0, 0.24, 1) infinite alternate;
+      }
+      .easing-track:nth-child(2) .easing-ball {
+        animation: easeDemo2 3s ease infinite alternate;
+      }
+      @keyframes easeDemo1 {
+        0% { left: 0; }
+        100% { left: calc(100% - 36px); }
+      }
+      @keyframes easeDemo2 {
+        0% { left: 0; }
+        100% { left: calc(100% - 36px); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Film Grain Overlay -->
+    <div class="film-grain" aria-hidden="true"></div>
+
+    <div class="style-tile-container">
+      <header class="style-header">
+        <p>Blush Couture • Design System &amp; Art Direction</p>
+        <h1>Bảng Phong Cách Thiết Kế</h1>
+        <p style="color: var(--ink-muted); font-size: 0.95rem; text-transform: none; max-width: 650px; margin: 1rem auto 0; font-weight: 300;">
+          Chuẩn mực nghệ thuật cho trang web quà cưới phong cách tạp chí thời trang cao cấp &amp; điện ảnh.
+        </p>
+        <div style="margin-top: 1.5rem;">
+          <a href="/" class="btn-pill btn-pill-secondary" style="font-size: 0.78rem; padding: 0.65rem 1.6rem;">
+            ← Quay lại trang chính
+          </a>
+        </div>
+      </header>
+
+      <!-- 1. Palette -->
+      <section class="style-section">
+        <h2 class="style-section-title">01. Bảng màu thương hiệu (Brand Palette)</h2>
+        <div class="swatches-grid">
+          <div class="swatch-card">
+            <div class="swatch-color" style="background-color: #FBF4EE;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Ivory</div>
+              <div class="swatch-hex">#FBF4EE</div>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background-color: #F3D9D4;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Blush</div>
+              <div class="swatch-hex">#F3D9D4</div>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background-color: #E8B4B8;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Pink</div>
+              <div class="swatch-hex">#E8B4B8</div>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background-color: #C98B8B;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Rose Gold</div>
+              <div class="swatch-hex">#C98B8B</div>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background-color: #D4AF7A;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Champagne</div>
+              <div class="swatch-hex">#D4AF7A</div>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background-color: #3A1F26;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Wine</div>
+              <div class="swatch-hex">#3A1F26</div>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background-color: #1E1218;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Night</div>
+              <div class="swatch-hex">#1E1218</div>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background-color: #2B1A1E;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Ink</div>
+              <div class="swatch-hex">#2B1A1E</div>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-color" style="background-color: #FFFDFB; border-bottom: 1px solid #EEE;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Paper</div>
+              <div class="swatch-hex">#FFFDFB</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Typography & Vietnamese Glyphs -->
+      <section class="style-section">
+        <h2 class="style-section-title">02. Hệ thống kiểu chữ &amp; Thử nghiệm Tiếng Việt</h2>
+        <div class="type-demo-box">
+          <div class="type-row">
+            <div class="type-meta">Display / Cormorant Garamond (Headline XL)</div>
+            <div class="type-sample-display-xl">
+              Thúy Hiền <span class="gold-foil">&amp;</span> Trung Kiên
+            </div>
+          </div>
+
+          <div class="type-row">
+            <div class="type-meta">Display Italic / Cormorant Garamond</div>
+            <div class="type-sample-display-lg">
+              “Chính thức chốt đơn trọn đời, một hành trình rạng rỡ.”
+            </div>
+          </div>
+
+          <div class="type-row">
+            <div class="type-meta">Script Flourish / Pinyon Script &amp; Great Vibes</div>
+            <div class="type-sample-script">
+              Gửi hai bạn với tất cả yêu thương
+            </div>
+          </div>
+
+          <div class="type-row">
+            <div class="type-meta">Body &amp; Editorial Paragraphs / Be Vietnam Pro</div>
+            <p class="type-sample-body">
+              Chúc hai cậu cùng nhau già đi, cùng nhau lên cân, wifi luôn mạnh, ví luôn đầy,
+              và không bao giờ cãi nhau vì câu hỏi muôn thuở “tối nay ăn gì”. Một tình yêu đơm hoa kết trái
+              giữa muôn vàn duyên nợ tuyệt vời.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Gold Foil Effect -->
+      <section class="style-section">
+        <h2 class="style-section-title">03. Hiệu ứng chữ dát vàng Champagne (Gold Foil Shimmer)</h2>
+        <div style="background: var(--wine); padding: 3rem; border-radius: 16px; text-align: center; color: var(--ivory);">
+          <p style="font-family: var(--font-body); font-size: 0.8rem; letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--champagne); margin-bottom: 1rem;">
+            ĐỘC BẢN HOÀNG GIA
+          </p>
+          <h2 style="font-family: var(--font-display); font-size: 3.5rem; font-weight: 400; margin-bottom: 0.5rem;">
+            Chúc Mừng <span class="gold-foil">Hạnh Phúc</span> Trăm Năm
+          </h2>
+          <p style="color: rgba(251, 244, 238, 0.7); font-size: 1rem; max-width: 500px; margin: 0 auto;">
+            Ánh kim tuyến champagne quét qua từng ký tự với gradient chuyển sắc mượt mà.
+          </p>
+        </div>
+      </section>
+
+      <!-- 4. Interactive Editorial Buttons -->
+      <section class="style-section">
+        <h2 class="style-section-title">04. Nút bấm tương tác từ tính (Magnetic Buttons)</h2>
+        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; background: var(--paper); padding: 2.5rem; border-radius: 16px; border: 1px solid rgba(212, 175, 122, 0.3);">
+          <button type="button" class="btn-pill btn-magnetic">
+            Khám phá món quà
+          </button>
+          <button type="button" class="btn-pill btn-pill-secondary btn-magnetic">
+            Ký nhận hợp đồng
+          </button>
+          <a href="#" class="link-draw">
+            Xem điều khoản chi tiết
+          </a>
+        </div>
+      </section>
+
+      <!-- 5. Glassmorphism Panels -->
+      <section class="style-section">
+        <h2 class="style-section-title">05. Bảng kính mờ viền kim loại (Glassmorphism)</h2>
+        <div class="glass-grid">
+          <div class="glass-bg-wrapper light-bg">
+            <div class="glass-panel glass-showcase">
+              <span style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--champagne); display: block; margin-bottom: 0.5rem;">
+                MESSENGER • THÔNG BÁO
+              </span>
+              <h3 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--ink);">
+                Thúy Hiền vừa cập nhật trạng thái
+              </h3>
+              <p style="color: var(--ink-muted); font-size: 0.95rem;">
+                Đã chính thức về chung một nhà với Trung Kiên.
+              </p>
+            </div>
+          </div>
+
+          <div class="glass-bg-wrapper dark-bg">
+            <div class="glass-panel-dark glass-showcase">
+              <span style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--champagne); display: block; margin-bottom: 0.5rem;">
+                CHƯƠNG V • HỢP ĐỒNG
+              </span>
+              <h3 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--ivory);">
+                Niêm phong bằng dấu sáp đỏ
+              </h3>
+              <p style="color: rgba(251, 244, 238, 0.7); font-size: 0.95rem;">
+                Chữ ký tươi, hiệu lực trọn đời, ngập tràn hạnh phúc.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Arch and Oval Frames -->
+      <section class="style-section">
+        <h2 class="style-section-title">06. Khung ảnh vòm &amp; Oval viền vàng lệch (Editorial Frames)</h2>
+        <div class="frames-grid">
+          <div class="frame-demo-item">
+            <div class="frame-preview frame-arch">
+              <div class="frame-monogram">H &amp; K</div>
+            </div>
+            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--ink-muted);">
+              Khung Vòm (Arch Frame)
+            </div>
+          </div>
+
+          <div class="frame-demo-item">
+            <div class="frame-preview frame-oval oval">
+              <div class="frame-monogram">H &amp; K</div>
+            </div>
+            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--ink-muted);">
+              Khung Tròn / Oval (Oval Frame)
+            </div>
+          </div>
+
+          <div class="frame-demo-item">
+            <div class="frame-preview frame-rect">
+              <div class="frame-monogram">H &amp; K</div>
+            </div>
+            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--ink-muted);">
+              Khung Chữ Nhật Biên Tập (Rect Frame)
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Custom Cursor Contextual Zones -->
+      <section class="style-section">
+        <h2 class="style-section-title">07. Vùng thử nghiệm con trỏ chuột ngữ cảnh (Custom Cursor)</h2>
+        <p style="font-size: 0.9rem; color: var(--ink-muted); margin-bottom: 1.5rem;">
+          Di chuột vào các ô dưới đây để thấy vòng tròn mở rộng và nhãn ngữ cảnh xuất hiện:
+        </p>
+        <div class="cursor-zones-grid">
+          <div class="cursor-zone" data-cursor="open">
+            <span style="font-size: 1.4rem;">💌</span>
+            <span>Vùng "Mở"</span>
+          </div>
+          <div class="cursor-zone" data-cursor="drag">
+            <span style="font-size: 1.4rem;">↔️</span>
+            <span>Vùng "Kéo"</span>
+          </div>
+          <div class="cursor-zone" data-cursor="scratch">
+            <span style="font-size: 1.4rem;">✨</span>
+            <span>Vùng "Cào"</span>
+          </div>
+          <div class="cursor-zone" data-cursor="sign">
+            <span style="font-size: 1.4rem;">✍️</span>
+            <span>Vùng "Ký"</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Easing Motion Comparison -->
+      <section class="style-section">
+        <h2 class="style-section-title">08. Ngôn ngữ chuyển động điện ảnh (Editorial Easing)</h2>
+        <div class="easing-box">
+          <div style="font-size: 0.8rem; margin-bottom: 0.5rem; color: var(--ink); font-weight: 600;">
+            Cubic-Bezier (0.76, 0, 0.24, 1) — Điện ảnh, dứt khoát, sang trọng:
+          </div>
+          <div class="easing-track">
+            <div class="easing-ball"></div>
+          </div>
+
+          <div style="font-size: 0.8rem; margin-bottom: 0.5rem; color: var(--ink-muted);">
+            Standard Ease thông thường (để so sánh):
+          </div>
+          <div class="easing-track">
+            <div class="easing-ball"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Style Tile Interactive Scripts -->
+    <script type="module">
+      import { initCustomCursor, initMagneticElements } from '/src/effects/customCursor.js';
+      initCustomCursor();
+      initMagneticElements();
+    </script>
+  </body>
+</html>

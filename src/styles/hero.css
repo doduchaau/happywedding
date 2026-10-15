@@ -1,0 +1,429 @@
+/* ==========================================================================
+   BLUSH COUTURE - CHAPTER II: CINEMATIC HERO & MARQUEE
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 1.5rem 4rem;
+  overflow: hidden;
+  background-color: var(--ivory);
+}
+
+/* Fluid WebGL Gradient Shader Canvas */
+.hero-webgl-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+/* Layered CSS Gradient Orbs (Fallback & Ambient Glow) */
+.hero-gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  opacity: 0.45;
+  z-index: 0;
+}
+
+.hero-orb-1 {
+  width: 50vw;
+  height: 50vw;
+  top: -15%;
+  left: 20%;
+  background: radial-gradient(circle, var(--blush) 0%, transparent 70%);
+}
+
+.hero-orb-2 {
+  width: 45vw;
+  height: 45vw;
+  bottom: -10%;
+  right: 15%;
+  background: radial-gradient(circle, var(--champagne-light) 0%, transparent 70%);
+}
+
+/* Hero Content Staging */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Ceremonial Wedding Ribbon Tag */
+.hero-wedding-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1.4rem;
+  border-radius: var(--radius-pill);
+  background: rgba(251, 244, 238, 0.85);
+  border: 1px solid rgba(212, 175, 122, 0.45);
+  box-shadow: 0 4px 18px rgba(212, 175, 122, 0.2);
+  backdrop-filter: blur(8px);
+  margin-bottom: 1.5rem;
+  animation: fadeInDown 1.2s ease backwards;
+}
+
+.wedding-tag-ornament {
+  color: var(--gold-bright);
+  font-size: 0.85rem;
+}
+
+.wedding-tag-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--ruby-light);
+}
+
+/* Editorial Kicker */
+.hero-kicker-wrapper {
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.hero-kicker {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--champagne);
+  display: inline-block;
+}
+
+/* Headline Editorial Sentence */
+.hero-headline-wrapper {
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink-muted);
+  line-height: 1.3;
+}
+
+/* Huge Serif Couple Names with Masked Line Reveals */
+.hero-names-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.hero-name-line-mask {
+  overflow: hidden;
+  line-height: 1.05;
+}
+
+.hero-name-line {
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 9.5vw, 8rem);
+  font-weight: 300;
+  letter-spacing: var(--tracking-tighter);
+  color: var(--ink);
+  display: block;
+  user-select: none;
+}
+
+.hero-name-line.italic {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-center-flourish {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0.6rem 0;
+  position: relative;
+}
+
+.hero-swans-heart-accent {
+  width: 110px;
+  height: 55px;
+  margin-bottom: -10px;
+  opacity: 0.95;
+  filter: drop-shadow(0 4px 14px rgba(212, 175, 122, 0.35));
+  animation: swanFloat 4.5s ease-in-out infinite alternate;
+}
+
+.hero-ampersand-mask {
+  overflow: hidden;
+  line-height: 0.9;
+  position: relative;
+}
+
+.hero-ampersand {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 5.2rem);
+  font-weight: 300;
+  font-style: italic;
+  display: block;
+}
+
+/* Interactive Easter Egg Target */
+.hero-name-bride {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.hero-name-bride:hover {
+  opacity: 0.92;
+}
+
+/* Hero Subtitle */
+.hero-subtitle-wrapper {
+  overflow: hidden;
+  margin-bottom: 3.5rem;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+  color: var(--ink-muted);
+  letter-spacing: var(--tracking-wide);
+  font-weight: 300;
+}
+
+/* Floating Arch-shaped Photo Frames with Parallax */
+.hero-floating-frames {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-float-frame {
+  position: absolute;
+  width: clamp(140px, 17vw, 240px);
+  aspect-ratio: 3/4.2;
+  border-radius: 120px 120px 16px 16px;
+  overflow: hidden;
+  border: 2px solid rgba(212, 175, 122, 0.55);
+  box-shadow: 0 16px 40px rgba(43, 26, 30, 0.12), 0 0 24px rgba(212, 175, 122, 0.25);
+  will-change: transform;
+  background: var(--ivory);
+}
+
+.hero-float-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+}
+
+.hero-float-frame-1 {
+  top: 15%;
+  left: 4%;
+}
+
+.hero-float-frame-2 {
+  bottom: 12%;
+  right: 5%;
+}
+
+.hero-float-frame-3 {
+  top: 22%;
+  right: 8%;
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .hero-float-frame-3 {
+    display: block;
+    width: 160px;
+  }
+}
+
+.hero-float-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+/* Rotating Circular Text Badge ("SCROLL • KÉO XUỐNG •") */
+.hero-scroll-badge {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 2.5rem;
+  width: 110px;
+  height: 110px;
+  pointer-events: all;
+  cursor: pointer;
+  z-index: 4;
+}
+
+@media (max-width: 600px) {
+  .hero-scroll-badge {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-top: 1rem;
+  }
+}
+
+.hero-scroll-badge-svg {
+  width: 100%;
+  height: 100%;
+  animation: rotateBadge 20s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes rotateBadge {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hero-scroll-badge-text {
+  font-family: var(--font-body);
+  font-size: 8.8px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  fill: var(--ink);
+  text-transform: uppercase;
+}
+
+.hero-scroll-badge-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--champagne);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--champagne);
+}
+
+/* ==========================================================================
+   INFINITE MARQUEE BAND (Solid / Outlined Alternating Serif Type)
+   ========================================================================== */
+.marquee-band-container {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(212, 175, 122, 0.4);
+  border-bottom: 1px solid rgba(212, 175, 122, 0.4);
+  background: var(--paper);
+  user-select: none;
+}
+
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  gap: 2.5rem;
+  will-change: transform;
+}
+
+.marquee-item {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.marquee-item.outlined {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--champagne);
+}
+
+.marquee-separator {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--champagne);
+}
+
+/* ==========================================================================
+   EASTER EGG FROSTED MODAL
+   ========================================================================== */
+.easter-egg-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(43, 26, 30, 0.6);
+  backdrop-filter: blur(16px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 1.5rem;
+}
+
+.easter-egg-modal.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.easter-egg-card {
+  max-width: 460px;
+  width: 100%;
+  background: rgba(255, 253, 251, 0.95);
+  border: 1px solid var(--champagne);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25), var(--glow-gold);
+  transform: translateY(20px) scale(0.96);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.easter-egg-modal.is-open .easter-egg-card {
+  transform: translateY(0) scale(1);
+}
+
+.easter-egg-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.easter-egg-message {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+}

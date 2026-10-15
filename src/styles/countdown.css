@@ -1,0 +1,206 @@
+/* ==========================================================================
+   BLUSH COUTURE - CHAPTER II: DARK WINE CINEMATIC COUNTDOWN
+   ========================================================================== */
+.countdown-section {
+  position: relative;
+  background-color: var(--wine);
+  color: var(--ivory);
+  padding: 8rem 1.5rem;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .countdown-section {
+    padding: 10rem 3rem;
+  }
+}
+
+/* Background Watermark Roman Numeral "II" */
+.countdown-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(12rem, 30vw, 32rem);
+  font-weight: 300;
+  color: rgba(212, 175, 122, 0.045);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  line-height: 1;
+}
+
+.countdown-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1080px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.countdown-kicker {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--champagne);
+  margin-bottom: 0.85rem;
+  display: block;
+}
+
+.countdown-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 400;
+  letter-spacing: var(--tracking-tight);
+  color: var(--ivory);
+  margin-bottom: 1rem;
+}
+
+.countdown-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  color: rgba(251, 244, 238, 0.65);
+  max-width: 620px;
+  margin: 0 auto 4.5rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* 4 Units Grid */
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .countdown-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+/* Countdown Card with Thin Gold Progress Ring */
+.countdown-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown-ring-wrapper {
+  position: relative;
+  width: clamp(140px, 18vw, 180px);
+  height: clamp(140px, 18vw, 180px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+/* SVG Gold Progress Ring */
+.countdown-ring-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  filter: drop-shadow(0 0 8px rgba(212, 175, 122, 0.45));
+}
+
+.countdown-ring-bg {
+  fill: none;
+  stroke: rgba(212, 175, 122, 0.15);
+  stroke-width: 1.5;
+}
+
+.countdown-ring-fill {
+  fill: none;
+  stroke: var(--champagne);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Odometer Roll Digits */
+.odometer-digit-box {
+  position: relative;
+  overflow: hidden;
+  height: 1.15em;
+  line-height: 1.15em;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5.5vw, 4.8rem);
+  font-weight: 300;
+  color: var(--ivory);
+  letter-spacing: -0.02em;
+}
+
+.odometer-digit-track {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.65s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.odometer-digit-value {
+  height: 1.15em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Unit Label */
+.countdown-label {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--champagne);
+}
+
+/* Notice for demo date */
+.countdown-notice {
+  margin-top: 3.5rem;
+  font-size: 0.85rem;
+  color: rgba(251, 244, 238, 0.55);
+  letter-spacing: var(--tracking-wide);
+}
+
+.countdown-notice code {
+  color: var(--champagne);
+  background: rgba(212, 175, 122, 0.15);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Done Celebration Box */
+.countdown-celebration {
+  background: rgba(255, 253, 251, 0.08);
+  border: 1px solid var(--champagne);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 3.5rem 2rem;
+  max-width: 650px;
+  margin: 0 auto;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), var(--glow-gold);
+}
+
+.celebration-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  color: var(--pale-gold);
+  margin-bottom: 1rem;
+}
+
+.celebration-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--ivory);
+  font-weight: 300;
+}

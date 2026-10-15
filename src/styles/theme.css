@@ -1,0 +1,263 @@
+:root {
+  /* ==========================================================================
+     BLUSH COUTURE LUXURY PALETTE
+     ========================================================================== */
+  --ivory: #FBF4EE;
+  --blush: #F3D9D4;
+  --pink: #E8B4B8;
+  --rose-gold: #C98B8B;
+  --champagne: #D4AF7A;
+  --champagne-light: #E8D5B5;
+  --pale-gold: #F4E8D1;
+  --wine: #3A1F26;
+  --wine-dark: #2B141B;
+  --night: #1E1218;
+  --night-deep: #140A10;
+  --ink: #2B1A1E;
+  --ink-muted: rgba(43, 26, 30, 0.68);
+  --paper: #FFFDFB;
+
+  /* Wedding Celebration Accents */
+  --ruby: #B01E3A;              /* Đỏ son truyền thống hỷ sự */
+  --ruby-light: #D43853;        /* Đỏ hồng rực rỡ */
+  --crimson-soft: #D4424F;      /* Đỏ ấm điểm xuyết */
+  --gold-bright: #F0C75E;       /* Vàng kim lộng lẫy */
+  --gold-glow: #FCE893;         /* Ánh vàng tỏa sáng */
+  --petal-pink: #FADADD;        /* Hồng cánh hoa nhẹ nhàng */
+  --string-light: #FFE082;      /* Đèn lồng & fairy lights vàng ấm */
+  --string-glow: 0 0 10px rgba(255, 224, 130, 0.85), 0 0 22px rgba(240, 199, 94, 0.45);
+
+  /* Active Chapter Theming Variables (interpolated by ScrollTrigger) */
+  --chapter-bg: var(--ivory);
+  --chapter-text: var(--ink);
+  --chapter-muted: var(--ink-muted);
+  --chapter-hairline: rgba(212, 175, 122, 0.4);
+  --chapter-glow: rgba(212, 175, 122, 0.15);
+
+  /* Legacy aliases for backward compatibility */
+  --bg: var(--ivory);
+  --pink-soft: var(--blush);
+  --peach: var(--pink);
+  --accent: var(--rose-gold);
+  --accent-hover: #b57777;
+  --text: var(--ink);
+  --text-muted: var(--ink-muted);
+
+  /* ==========================================================================
+     TYPOGRAPHY
+     ========================================================================== */
+  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-body: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-script: 'Pinyon Script', 'Great Vibes', 'Dancing Script', cursive;
+
+  /* Typography scale */
+  --tracking-tighter: -0.04em;
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.08em;
+  --tracking-wider: 0.16em;
+  --tracking-widest: 0.25em;
+
+  /* ==========================================================================
+     EASINGS & TRANSITIONS
+     ========================================================================== */
+  --ease-editorial: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-spring-micro: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Border Radii */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-arch: 999px 999px 0 0;
+  --radius-pill: 9999px;
+
+  /* Shadows & Glows */
+  --shadow-subtle: 0 4px 20px rgba(43, 26, 30, 0.05);
+  --shadow-editorial: 0 20px 50px -10px rgba(43, 26, 30, 0.12), 0 6px 16px rgba(43, 26, 30, 0.04);
+  --shadow-glass: 0 8px 32px 0 rgba(43, 26, 30, 0.08);
+  --glow-gold: 0 0 24px rgba(212, 175, 122, 0.32);
+  --glow-rose: 0 0 30px rgba(232, 180, 184, 0.28);
+}
+
+/* ==========================================================================
+   GLOBAL GOLD FOIL SHIMMER TEXT
+   ========================================================================== */
+.gold-foil {
+  background: linear-gradient(
+    115deg,
+    var(--champagne) 0%,
+    var(--pale-gold) 25%,
+    #FFF6E5 50%,
+    var(--pale-gold) 75%,
+    var(--rose-gold) 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: foilShimmer 8s linear infinite;
+}
+
+@keyframes foilShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ==========================================================================
+   HAIRLINE GOLD ACCENTS & EDITORIAL FRAMES
+   ========================================================================== */
+.gold-hairline {
+  border: 1px solid rgba(212, 175, 122, 0.45);
+}
+
+.gold-hairline-bottom {
+  border-bottom: 1px solid rgba(212, 175, 122, 0.45);
+}
+
+.gold-hairline-top {
+  border-top: 1px solid rgba(212, 175, 122, 0.45);
+}
+
+/* Arch Shaped Photo Frame with Offset Gold Outline */
+.frame-arch {
+  position: relative;
+  border-radius: 999px 999px 12px 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-editorial);
+}
+
+.frame-arch::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 1px solid rgba(212, 175, 122, 0.55);
+  border-radius: 999px 999px 16px 16px;
+  pointer-events: none;
+  transition: transform 0.6s var(--ease-editorial);
+  z-index: 2;
+}
+
+.frame-arch:hover::after {
+  transform: scale(1.02);
+}
+
+/* Oval Shaped Photo Frame with Offset Gold Outline */
+.frame-oval {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: var(--shadow-editorial);
+}
+
+.frame-oval::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border: 1px solid rgba(212, 175, 122, 0.55);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 0.6s var(--ease-editorial);
+  z-index: 2;
+}
+
+.frame-oval:hover::after {
+  transform: scale(1.025);
+}
+
+/* Editorial Rectangle Frame */
+.frame-rect {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: var(--shadow-editorial);
+}
+
+.frame-rect::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 1px solid rgba(212, 175, 122, 0.55);
+  border-radius: 6px;
+  pointer-events: none;
+  transition: transform 0.6s var(--ease-editorial);
+  z-index: 2;
+}
+
+.frame-rect:hover::after {
+  transform: scale(1.015);
+}
+
+/* ==========================================================================
+   GLASSMORPHISM PANELS (REFINED EDITORIAL)
+   ========================================================================== */
+.glass-panel {
+  background: rgba(255, 253, 251, 0.65);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(212, 175, 122, 0.35);
+  box-shadow: 0 16px 40px rgba(43, 26, 30, 0.06), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.glass-panel-dark {
+  background: rgba(43, 26, 30, 0.55);
+  backdrop-filter: blur(24px) saturate(130%);
+  -webkit-backdrop-filter: blur(24px) saturate(130%);
+  border: 1px solid rgba(212, 175, 122, 0.3);
+  box-shadow: 0 20px 50px rgba(10, 5, 8, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  color: var(--ivory);
+}
+
+/* ==========================================================================
+   OVERSIZED CHAPTER NUMERALS (BACKGROUND TYPOGRAPHY)
+   ========================================================================== */
+.chapter-watermark {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 22vw, 22rem);
+  font-weight: 300;
+  line-height: 0.8;
+  color: rgba(212, 175, 122, 0.08);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: -0.05em;
+  transition: color 0.8s var(--ease-editorial);
+}
+
+.chapter-watermark.dark {
+  color: rgba(212, 175, 122, 0.06);
+}
+
+/* ==========================================================================
+   FILM GRAIN OVERLAY & LIGHT LEAKS
+   ========================================================================== */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99990;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Drifting ambient gradient orb */
+.light-leak {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  opacity: 0.45;
+  z-index: 0;
+  animation: floatOrb 14s ease-in-out infinite alternate;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.15); }
+  100% { transform: translate(-30px, 35px) scale(0.95); }
+}
