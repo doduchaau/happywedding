@@ -4,11 +4,12 @@
 .hero-section {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 6rem 1.5rem 4rem;
+  padding: clamp(5rem, 10vh, 7rem) 0 clamp(3rem, 6vh, 4rem);
   overflow: hidden;
   background-color: var(--ivory);
 }
@@ -58,6 +59,7 @@
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem);
 }
 
 /* Ceremonial Wedding Ribbon Tag */
@@ -329,11 +331,7 @@
    ========================================================================== */
 .marquee-band-container {
   position: relative;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  width: 100%;
   overflow: hidden;
   padding: 1.5rem 0;
   border-top: 1px solid rgba(212, 175, 122, 0.4);

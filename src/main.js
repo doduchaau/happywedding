@@ -1,5 +1,6 @@
 import './styles/theme.css';
 import './styles/base.css';
+import './styles/responsive.css';
 import './styles/loader.css';
 import './styles/intro3d.css';
 import './styles/hero.css';
@@ -11,7 +12,6 @@ import './styles/contract.css';
 import './styles/wishPit.css';
 import './styles/scratchCards.css';
 import './styles/video.css';
-import './styles/venue.css';
 import './styles/nightSky.css';
 import './styles/weddingOrnaments.css';
 
@@ -39,7 +39,6 @@ import { initContractSection } from './sections/contract.js';
 import { initWishPitSection } from './sections/wishPit.js';
 import { initScratchCardsSection } from './sections/scratchCards.js';
 import { initVideoSection } from './sections/video.js';
-import { initVenueSection } from './sections/venue.js';
 import { initNightSkySection } from './sections/nightSky.js';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -85,6 +84,27 @@ if (!isReducedMotion()) {
 
   // Keep scroll locked while preloader & 3D intro are active
   lenis.stop();
+}
+
+// 3b. Đồng bộ Lenis với trạng thái modal (lightbox / capsule)
+window.addEventListener('app:modal-open', () => lenis?.stop());
+window.addEventListener('app:modal-close', () => {
+  if (!document.body.classList.contains('scroll-locked')) lenis?.start();
+});
+
+// 3c. Debounced refresh khi resize / xoay máy / đổi hướng
+let refreshTimer = null;
+const scheduleRefresh = () => {
+  if (refreshTimer) clearTimeout(refreshTimer);
+  refreshTimer = setTimeout(() => {
+    ScrollTrigger.refresh();
+    updateScrollProgress();
+  }, 200);
+};
+window.addEventListener('resize', scheduleRefresh);
+window.addEventListener('orientationchange', scheduleRefresh);
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', scheduleRefresh);
 }
 
 // 4. Gold scroll progress bar indicator
@@ -148,7 +168,6 @@ initContractSection(CONFIG);
 initWishPitSection(CONFIG);
 initScratchCardsSection(CONFIG);
 initVideoSection(CONFIG);
-initVenueSection(CONFIG);
 initNightSkySection(CONFIG);
 
 // 8b. Setup Ceremonial Wedding Dividers & Falling Rose Petals

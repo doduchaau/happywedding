@@ -14,7 +14,6 @@ export function initHeroSection(config) {
   const subtitle = config.hero?.subtitle || 'Một đám cưới được mong chờ nhất mùa thu này.';
   const bride = config.couple?.bride || 'Thúy Hiền';
   const groom = config.couple?.groom || 'Trung Kiên';
-  const scrollBadge = config.hero?.scrollBadge || 'SCROLL • KÉO XUỐNG •';
   const marqueeItems = config.marquee || ['THÚY HIỀN', 'TRUNG KIÊN', 'CHÚC MỪNG HẠNH PHÚC', 'TRĂM NĂM HẢO HỢP'];
   const photos = config.photos || [];
 
@@ -93,20 +92,6 @@ export function initHeroSection(config) {
           <p class="hero-subtitle" id="hero-subtitle">${subtitle}</p>
         </div>
 
-        <!-- Rotating Circular Scroll Badge -->
-        <div class="hero-scroll-badge" id="hero-scroll-badge" role="button" aria-label="Cuộn xuống khám phá">
-          <svg class="hero-scroll-badge-svg" viewBox="0 0 100 100">
-            <path id="badge-circle-path" d="M 50, 50 m -36, 0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" fill="none" />
-            <text class="hero-scroll-badge-text">
-              <textPath href="#badge-circle-path">${scrollBadge} •</textPath>
-            </text>
-          </svg>
-          <div class="hero-scroll-badge-center">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 5v14M19 12l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-        </div>
       </div>
 
       <!-- Easter Egg Secret Modal -->

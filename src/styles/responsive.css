@@ -1,0 +1,297 @@
+/* ==========================================================================
+   RESPONSIVE LAYER — mọi breakpoint, an toàn tuyệt đối trên mobile/tablet/
+   desktop/landscape/deep zoom. File này load SAU theme.css & base.css nên
+   luôn thắng các rule cũ cùng độ cụ thể.
+   ========================================================================== */
+
+/* ---------- 1. SAFE AREAS + GLOBAL HYGIENE ---------- */
+html, body {
+  max-width: 100%;
+  overflow-x: clip; /* modern replacement: vẫn giữ được position:sticky */
+}
+
+img, video, canvas, svg, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* iOS notch / dynamic island cho các khối fixed */
+@supports (padding: max(0px)) {
+  .chapter-nav-indicator {
+    top: max(1.25rem, calc(0.75rem + var(--safe-top)));
+    left: max(1.75rem, calc(1rem + var(--safe-left)));
+  }
+  .floating-actions-bar {
+    bottom: max(1.75rem, calc(1rem + var(--safe-bottom)));
+    right: max(1.75rem, calc(1rem + var(--safe-right)));
+  }
+}
+
+/* ---------- 2. QUÁT DỤNG CHUNG CHO MÀN HÌNH NHỎ ---------- */
+@media (max-width: 768px) {
+  .chapter-nav-indicator {
+    top: calc(0.65rem + var(--safe-top));
+    left: calc(0.85rem + var(--safe-left));
+    font-size: 0.62rem;
+    gap: 0.45rem;
+    max-width: min(100vw - 7rem, 18rem);
+  }
+
+  .floating-actions-bar {
+    bottom: calc(0.85rem + var(--safe-bottom));
+    right: calc(0.85rem + var(--safe-right));
+    gap: 0.55rem;
+  }
+  .reduce-effects-btn {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.68rem;
+    max-width: 46vw;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .music-toggle-btn { width: 44px; height: 44px; flex-shrink: 0; }
+
+  .toast-container {
+    top: calc(3.4rem + var(--safe-top));
+    width: calc(100vw - 1.5rem);
+    max-width: 420px;
+  }
+  .toast-message { padding: 0.7rem 1rem; font-size: 0.8rem; }
+}
+
+/* ---------- 3. HERO ---------- */
+@media (max-width: 900px) {
+  .hero-float-frame { opacity: 0.45 !important; transform: scale(0.72) !important; }
+  .hero-float-frame-3 { display: none; }
+}
+@media (max-width: 600px) {
+  .hero-float-frame {
+    width: clamp(110px, 34vw, 160px) !important;
+    height: clamp(150px, 46vw, 220px) !important;
+    opacity: 0.3 !important;
+  }
+  .hero-float-frame-2 { display: none; }
+  .hero-headline { font-size: clamp(1.15rem, 5vw, 1.5rem); }
+  .hero-name-line { font-size: clamp(2.6rem, 13vw, 4rem); }
+  .hero-wedding-tag { padding: 0.4rem 0.9rem; margin-bottom: 1rem; }
+  .wedding-tag-label { font-size: 0.6rem; letter-spacing: 0.18em; }
+  .hero-subtitle { font-size: 0.95rem; }
+  .marquee-band-container { padding: 1rem 0; }
+  .marquee-item { font-size: clamp(1.6rem, 7vw, 2.4rem); gap: 1.4rem; }
+}
+@media (max-width: 380px) {
+/* ---------- 4. INTRO / ENVELOPE ---------- */
+@media (max-width: 600px) {
+  .intro-ui-layer { bottom: calc(5.5rem + var(--safe-bottom)); padding: 0 1rem; }
+  .intro-title { font-size: clamp(1.45rem, 6vw, 2rem); margin-bottom: 0.6rem; }
+  .intro-hint-pill { padding: 0.55rem 1.1rem; font-size: 0.74rem; }
+  .intro-skip-btn {
+    bottom: calc(1rem + var(--safe-bottom)) !important;
+    right: 50% !important;
+    transform: translateX(50%);
+    padding: 0.5rem 1.2rem;
+  }
+  .envelope-fallback-wrapper {
+    width: min(86vw, 340px) !important;
+    height: auto !important;
+    aspect-ratio: 16 / 11;
+  }
+}
+
+/* ---------- 5. COUNTDOWN ---------- */
+@media (max-width: 767px) {
+  .countdown-section { padding: clamp(4.5rem, 12vw, 7rem) 1rem; }
+  .countdown-grid { gap: 1.6rem 0.75rem; }
+  .countdown-ring-wrapper { width: clamp(112px, 34vw, 150px); height: clamp(112px, 34vw, 150px); margin-bottom: 0.7rem; }
+  .odometer-digit-box { font-size: clamp(2.4rem, 11vw, 3.6rem); }
+  .countdown-label { font-size: 0.62rem; letter-spacing: 0.18em; }
+  .countdown-kicker { font-size: 0.62rem; }
+  .countdown-title { font-size: clamp(1.85rem, 7vw, 2.6rem); }
+  .countdown-subtitle { font-size: 0.9rem; margin-bottom: 2.6rem; }
+  .countdown-notice { margin-top: 2.2rem; font-size: 0.75rem; padding: 0 0.75rem; }
+  .countdown-celebration { padding: 2.2rem 1.25rem; }
+  .celebration-title { font-size: clamp(1.6rem, 7vw, 2.3rem); }
+  .celebration-subtitle { font-size: 0.95rem; }
+}
+@media (max-width: 400px) {
+  .countdown-grid { gap: 1.35rem 0.5rem; }
+  .countdown-ring-wrapper { width: clamp(96px, 30vw, 130px); height: clamp(96px, 30vw, 130px); }
+  .odometer-digit-box { font-size: clamp(2rem, 10vw, 3rem); }
+}
+@media (max-width: 768px) and (orientation: landscape) and (max-height: 520px) {
+  .countdown-section { padding: 3.5rem 1rem; }
+  .countdown-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+  .countdown-ring-wrapper { width: clamp(72px, 20vh, 110px); height: clamp(72px, 20vh, 110px); }
+  .odometer-digit-box { font-size: clamp(1.6rem, 8vh, 2.6rem); }
+  .countdown-subtitle { margin-bottom: 1.5rem; }
+}
+
+/* ---------- 6. LETTER ---------- */
+@media (max-width: 767px) {
+  .letter-section { padding: clamp(4.5rem, 12vw, 7rem) 1rem; }
+  .letter-header { margin-bottom: 2.5rem; }
+  .letter-arch-container { max-width: min(78vw, 340px); }
+  .letter-parchment-sheet { padding: clamp(1.4rem, 6vw, 2rem); }
+  .letter-sheet-xi-stamp { top: 1rem; right: 1rem; width: 38px; height: 38px; font-size: 1.1rem; }
+  .letter-floral-corner { display: none; }
+  .letter-greeting { font-size: clamp(2rem, 8vw, 2.6rem); margin-bottom: 1.6rem; }
+  .letter-paragraph { font-size: clamp(1.08rem, 4.4vw, 1.25rem); line-height: 1.75; margin-bottom: 2rem; }
+  .letter-closing-box { margin-top: 2.2rem; padding-top: 1.6rem; }
+  .letter-closing-text { font-size: 1.7rem; }
+  .letter-signature-svg-wrapper { width: min(240px, 70vw); height: auto; aspect-ratio: 3 / 1; }
+}
+@media (max-width: 480px) {
+  .letter-arch-container { border-radius: 140px 140px 12px 12px; }
+}
+  .hero-name-line { font-size: clamp(2.1rem, 12vw, 3rem); }
+}
+/* ---------- 7. GALLERY (horizontal track + lightbox) ---------- */
+@media (max-width: 768px) {
+  .gallery-section { padding: clamp(3.5rem, 10vw, 6rem) 0; }
+  .gallery-header { margin-bottom: 2rem; padding: 0 1.1rem; }
+  .gallery-title { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+  .gallery-track { gap: clamp(1.4rem, 5vw, 2rem); padding: 1.5rem clamp(1rem, 5vw, 2rem) 1rem; }
+  .gallery-frame-box { width: clamp(230px, 66vw, 320px) !important; height: auto !important; aspect-ratio: 3 / 4; }
+  .gallery-frame-box.frame-size-landscape { aspect-ratio: 4 / 3; }
+  .gallery-frame-box.frame-size-oval { aspect-ratio: 3 / 4.4; }
+  .gallery-item-card:nth-child(even) { margin-top: 1.5rem; }
+  .gallery-item-card:nth-child(3n) { margin-top: 0; }
+  .gallery-caption-wrapper { max-width: clamp(230px, 66vw, 320px); margin-top: 0.9rem; }
+  .gallery-caption { font-size: 0.95rem; }
+  .gallery-card-numeral { font-size: 3.2rem; top: -1.6rem; right: -0.4rem; }
+  .gallery-lightbox { padding: 0.75rem; }
+  .lightbox-content { max-height: 92dvh; }
+  .lightbox-img-wrapper { max-height: 66dvh; }
+  .lightbox-img { max-height: 66dvh; width: 100%; }
+  .lightbox-close-btn { top: 0.25rem; right: 0.25rem; font-size: 1.9rem; z-index: 5; }
+  .lightbox-prev-btn { left: 0.35rem; width: 42px; height: 42px; font-size: 1.5rem; }
+  .lightbox-next-btn { right: 0.35rem; width: 42px; height: 42px; font-size: 1.5rem; }
+  .lightbox-caption { font-size: 1rem; max-width: 100%; padding: 0 3.2rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+}
+@media (max-width: 400px) {
+  .gallery-frame-box { width: clamp(210px, 74vw, 280px) !important; }
+  .gallery-caption-wrapper { max-width: clamp(210px, 74vw, 280px); }
+}
+
+/* ---------- 8. CONTRACT ---------- */
+@media (max-width: 767px) {
+  .contract-section { padding: clamp(4.5rem, 12vw, 7rem) 1rem; }
+  .contract-swans-crest { width: min(110px, 30vw); height: auto; aspect-ratio: 1006 / 495; margin-bottom: 1rem; }
+  .contract-header-editorial { margin-bottom: 2rem; }
+  .contract-kicker { font-size: 0.62rem; }
+  .contract-main-title { font-size: clamp(1.9rem, 8vw, 2.8rem); }
+  .contract-subtitle-text { font-size: 0.92rem; }
+  .contract-parchment { padding: clamp(1.4rem, 6vw, 2.2rem); border-radius: 8px; }
+  .contract-parchment::before { inset: 7px; }
+  .contract-doc-title { font-size: clamp(1.4rem, 6vw, 2rem); }
+  .contract-clause-line { font-size: 1rem; align-items: flex-start; }
+  .signature-pads-grid { grid-template-columns: 1fr !important; gap: 1.4rem; }
+  .signature-canvas-box { height: clamp(140px, 38vw, 200px); }
+  .contract-actions-group { gap: 0.8rem; }
+  .contract-actions-group .btn-pill { padding: 0.8rem 1.4rem; font-size: 0.72rem; min-height: 46px; }
+  .contract-wax-seal { width: 76px; height: 76px; }
+}
+
+/* ---------- 9. WISH PIT (physics canvas) ---------- */
+@media (max-width: 767px) {
+  .wish-pit-section { padding: clamp(4.5rem, 12vw, 7rem) 1rem; }
+  .wish-pit-header { margin-bottom: 1.8rem; }
+  .wish-pit-title { font-size: clamp(1.9rem, 8vw, 2.7rem); }
+  .wish-pit-subtitle { font-size: 0.9rem; }
+  .wish-pit-glass-stage { height: clamp(360px, 58vh, 500px); border-radius: 12px; margin-bottom: 1.4rem; }
+  .wish-pit-hint-overlay { top: 0.75rem; font-size: 0.64rem; padding: 0.4rem 0.85rem; width: calc(100% - 1.5rem); max-width: 420px; text-align: center; line-height: 1.5; letter-spacing: 0.08em; }
+  .wish-pit-controls { gap: 0.7rem; }
+  .wish-pit-controls .btn-pill { padding: 0.8rem 1.35rem; font-size: 0.72rem; min-height: 46px; }
+  .capsule-modal { padding: 1rem; }
+  .capsule-modal-card { padding: 2.6rem 1.4rem 2rem; }
+  .capsule-modal-wish { font-size: clamp(1.35rem, 6vw, 1.8rem); margin-bottom: 1.4rem; }
+  .capsule-modal-close-btn { top: 0.6rem; right: 0.8rem; }
+}
+
+/* ---------- 10. SCRATCH CARDS ---------- */
+@media (max-width: 767px) {
+  .scratch-section { padding: clamp(4.5rem, 12vw, 7rem) 1rem; }
+  .scratch-header { margin-bottom: 2.2rem; }
+  .scratch-title { font-size: clamp(1.9rem, 8vw, 2.7rem); }
+  .scratch-subtitle { font-size: 0.9rem; }
+  .scratch-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.4rem; margin-bottom: 2rem; }
+  .scratch-card-item { padding: 0.75rem; }
+  .scratch-media-box { aspect-ratio: 4 / 3; }
+  .scratch-caption { font-size: 0.95rem; margin-top: 0.75rem; }
+  .scratch-progress-pill { padding: 0.55rem 1.1rem; font-size: 0.72rem; }
+  .scratch-finale-box { padding: clamp(1.4rem, 6vw, 2.4rem); }
+  .scratch-finale-photo { max-width: min(260px, 70vw); margin-bottom: 1.4rem; }
+  .scratch-finale-msg { font-size: clamp(1.5rem, 7vw, 2.2rem); }
+}
+@media (max-width: 380px) { .scratch-grid { grid-template-columns: 1fr; } }
+
+/* ---------- 11. VIDEO ---------- */
+@media (max-width: 767px) {
+  .video-section { padding: clamp(4rem, 10vw, 6rem) 1rem; }
+  .video-section header h2 { font-size: clamp(1.6rem, 7vw, 2.2rem) !important; }
+  .video-play-btn { width: 58px; height: 58px; font-size: 1.3rem; }
+}
+
+/* ---------- 13. NIGHT SKY / FOOTER ---------- */
+@media (max-width: 768px) {
+  .night-sky-section { min-height: 220vh; }
+  .night-finale-line:nth-child(1) { font-size: clamp(1.7rem, 7vw, 2.4rem); }
+  .night-finale-line:nth-child(2) { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .night-finale-line:nth-child(3) { font-size: clamp(1.7rem, 7vw, 2.4rem); }
+  .night-congrats-panel { margin-top: 1.8rem; gap: 0.85rem; }
+  .night-congrats-btn { padding: 0.85rem 2rem; font-size: 0.8rem; }
+  .night-cloud-1, .night-cloud-2 { opacity: 0.4 !important; }
+  .editorial-footer { padding: 4rem 1.1rem calc(2.6rem + var(--safe-bottom)); }
+  .footer-monogram { font-size: 2.3rem; }
+  .footer-credit { font-size: 0.88rem; }
+}
+@media (max-width: 420px) { .night-finale-line { line-height: 1.25 !important; } }
+
+/* ---------- 14. NOTIFICATIONS / PRELOADER ---------- */
+@media (max-width: 600px) {
+  .notifications-dock { top: calc(3.6rem + var(--safe-top)); left: 50%; right: auto; transform: translateX(-50%); width: calc(100vw - 1.4rem); max-width: 360px; }
+  .notification-banner { padding: 0.75rem 1rem; }
+  .notif-text { font-size: 0.8rem; }
+}
+@media (max-width: 420px) {
+  .preloader-center-content { padding: 1.25rem; }
+/* ---------- 15. TOUCH: TẮT CUSTOM CURSOR + TẮT HOVER NẶNG ---------- */
+@media (hover: none), (pointer: coarse) {
+  .editorial-cursor-container { display: none !important; }
+  .scratch-card-item:hover { transform: none; box-shadow: var(--shadow-editorial); }
+  .gallery-item-card:hover { transform: none; }
+}
+
+/* ---------- 16. PREFERS-REDUCED-MOTION: giữ layout, bỏ hiệu ứng nặng ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .editorial-cursor-container { display: none !important; }
+  .marquee-track { animation: none !important; }
+  .shower-petal { animation: none; display: none; }
+}
+
+/* ---------- 17. PRINT ---------- */
+@media print {
+  .film-grain, .light-leak, #scroll-progress, .chapter-nav-indicator,
+  .floating-actions-bar, .petals-shower-container, .ceremony-divider,
+  .preloader-screen, .intro-3d-screen, .notifications-dock,
+  .gallery-lightbox, .capsule-modal { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+  .countdown-section, .contract-section, .night-sky-section { background: #fff !important; color: #000 !important; }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; }
+}
+
+/* ---------- 18. VERY LARGE SCREENS / 4K ---------- */
+@media (min-width: 1800px) {
+  .hero-content { max-width: 1280px; }
+  .letter-container, .wish-pit-wrapper, .scratch-container, .contract-container { max-width: 1240px; }
+}
+
+/* ---------- 19. FOLDABLE / SPLIT VIEW ---------- */
+@media (max-width: 900px) and (min-width: 600px) {
+  .letter-columns-grid { gap: 2.4rem; }
+  .signature-pads-grid { gap: 1.4rem; }
+}
+
+  .loader-monogram-box { width: 130px; height: 98px; margin-bottom: 1.4rem; }
+  .loader-msg-text { font-size: 0.66rem; letter-spacing: 0.1em; }
+}

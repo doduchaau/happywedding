@@ -28,14 +28,21 @@ export function getXiSvg(size = 48, color = 'currentColor') {
 }
 
 /**
- * Returns pair of white & gold swans forming a heart with their curved necks
+ * Returns pair of white & gold swans forming a heart with their curved necks.
+ * Dùng <picture> để ưu tiên WebP (nhẹ hơn ~50%) và fallback PNG cho trình duyệt cũ.
  */
 export function getSwansHeartSvg({ isWhite = false } = {}) {
-  const imgSrc = isWhite ? '/photos/swans-pair-white.png' : '/photos/swans-pair.png';
+  const webp = isWhite ? '/photos/swans-pair-white.webp' : '/photos/swans-pair.webp';
+  const png = isWhite ? '/photos/swans-pair-white.png' : '/photos/swans-pair.png';
   return `
-    <svg class="swans-heart-vector ${isWhite ? 'is-white-swan' : ''}" viewBox="0 0 1006 495" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="Cặp thiên nga tạo hình trái tim">
-      <image href="${imgSrc}" xlink:href="${imgSrc}" x="0" y="0" width="1006" height="495" preserveAspectRatio="xMidYMid meet" />
-    </svg>
+    <picture class="swans-heart-picture">
+      <source srcset="${webp}" type="image/webp" />
+      <img class="swans-heart-vector ${isWhite ? 'is-white-swan' : ''}"
+           src="${png}"
+           alt="Cặp thiên nga tạo hình trái tim"
+           loading="lazy" decoding="async"
+           width="1006" height="495" />
+    </picture>
   `;
 }
 

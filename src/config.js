@@ -52,12 +52,13 @@ export const CONFIG = {
   },
 
   // --- Thông tin người gửi món quà / Gift Sender Information ---
-  sender: "[TÊN CỦA BẠN]",            // Tên người tặng quà / Sender's name
+  sender: "doduchaau with love",            // Tên người tặng quà / Sender's name
   senderRole: "bạn thân của cô dâu",  // Mối quan hệ thân thiết / Relationship role
 
   // --- Ngày giờ tổ chức đám cưới (Định dạng ISO UTC+7) ---
   // Wedding Date & Time (ISO format, UTC+7 Vietnam time, e.g. "2026-11-20T18:00:00+07:00")
-  weddingDate: "[YYYY-MM-DD]T[HH:MM]:00+07:00",
+  // ⚠️ THAY NGÀY NÀY THÀNH NGÀY THẬT CỦA BẠN ĐỂ ĐẾM NGƯỢC CHÍNH XÁC
+  weddingDate: "2026-10-25T18:00:00+07:00",
 
   // --- Dải chữ chạy vô tận phong cách tuần báo / Infinite Marquee Band ---
   marquee: [
@@ -105,7 +106,7 @@ export const CONFIG = {
 
   // --- Tính năng ẩn (Easter Egg) khi chạm 5 lần vào tên cô dâu ---
   easterEgg: {
-    taps: 5, // Số lần chạm để kích hoạt / Number of taps on bride's name
+    taps: 3, // Số lần chạm để kích hoạt / Number of taps on bride's name
     message: "Bí mật: Hiền ơi, tớ đã khóc lúc viết cái này (hơi hơi). Thương hai cậu nhiều lắm!",
   },
 
@@ -159,15 +160,15 @@ export const CONFIG = {
 
   // --- Bức thư tâm tình biên tập / Heartfelt Letter from Sender ---
   letter: {
-    greeting: "Gửi Thúy Hiền và Trung Kiên,",
+    greeting: "Gửi cô Hìn,",
     paragraphs: [
-      "Hiền ơi, cuối cùng cậu cũng chốt đơn thành công rồi! Tớ vừa mừng vừa tiếc: mừng vì cậu tìm được người đủ kiên nhẫn chịu đựng cậu cả đời, tiếc vì từ nay mấy buổi cà phê tối thứ Sáu của tụi mình sẽ bị cắt giảm đáng kể.",
-      "Kiên ơi, chúc mừng cậu đã trúng giải độc đắc. Một lời khuyên: vợ luôn đúng. Còn nếu thấy vợ sai thì hãy xem lại câu đầu tiên.",
-      "Chúc hai cậu cùng nhau già đi, cùng nhau lên cân, wifi luôn mạnh, ví luôn đầy, và không bao giờ cãi nhau vì câu hỏi muôn thuở 'tối nay ăn gì'. Mà có cãi thì cuối cùng cũng đi ăn lẩu.",
-      "Cảm ơn hai cậu vì đã cho tớ chứng kiến một chuyện tình đáng yêu như vậy. Nhớ để dành bàn gần sân khấu cho tớ nha, tớ đến sớm để ăn là chính, chúc mừng là phụ.",
+      "Hehe, đến giờ vẫn chưa tin được cô tôi đã lấy chồng.",
+      "Gửi lời chúc sớm đến cô nhiều hạnh phúc, nhiều niềm vui.",
+      "Chúc cả hai cùng nhau già đi, cùng nhau lên cân, wifi luôn mạnh, ví luôn đầy, và không bao giờ cãi nhau vì câu hỏi muôn thuở 'tối nay ăn gì'. Mà có cãi thì cuối cùng cũng đi ăn lẩu.",
+      "Nhớ để dành con tôm cho cháu nha, ăn là chính, chúc mừng là phụ.",
     ],
-    closing: "Yêu hai cậu thật nhiều,",
-    signature: "[TÊN CỦA BẠN]",
+    closing: "Happy Wedding,",
+    signature: "doduchaau with love",
   },
 
   // --- Hợp đồng hôn nhân trọn đời & Dấu sáp / Marriage Contract ---
@@ -194,7 +195,6 @@ export const CONFIG = {
   // --- 12 Lời chúc dí dỏm cho Bể ước nguyện / 12 Witty Wishes for Wish Vault ---
   wishes: [
     "Chúc hai bạn trăm năm hạnh phúc, và trăm năm không ai giành remote TV.",
-    "Chúc Kiên luôn nhớ ngày kỷ niệm. Chúc Hiền luôn nhớ rằng Kiên đã cố gắng nhớ.",
     "Chúc hai bạn ăn gì cũng ngon, ngủ đâu cũng say, cãi nhau năm phút là làm lành.",
     "Chúc nhà mình luôn có tiếng cười, và hóa đơn điện nước luôn thấp hơn dự kiến.",
     "Chúc Hiền mãi xinh đẹp, chúc Kiên mãi nhớ rằng câu trả lời an toàn nhất là 'em đúng'.",
@@ -247,23 +247,12 @@ export const CONFIG = {
     title: "Thước phim kỷ niệm gửi tặng hai bạn",
   },
 
-  // --- Thông tin địa điểm tổ chức tiệc cưới / Wedding Venue Info ---
-  venue: {
-    show: true, // true = hiển thị / true = show section
-    title: "Hẹn gặp hai bạn tại tiệc cưới",
-    name: "[TÊN ĐỊA ĐIỂM TIỆC CƯỚI]",
-    address: "[ĐỊA CHỈ TRANG TRỌNG]",
-    time: "[GIỜ, NGÀY TỔ CHỨC]",
-    mapLink: "https://maps.google.com/?q=[ĐỊA+CHỈ]",
-    buttonLabel: "Xem bản đồ chỉ đường",
-  },
-
   // --- Đêm pháo hoa & Đèn trời kết thúc / Night Sky Finale ---
   finale: {
     lines: [
       "Chúc mừng hạnh phúc",
       "Thúy Hiền & Trung Kiên",
-      "Từ [TÊN CỦA BẠN] với tất cả yêu thương",
+      "Từ một người bạn thân với tất cả yêu thương",
     ],
     lanternWishes: [
       "Bình an",
@@ -278,7 +267,7 @@ export const CONFIG = {
 
   // --- Lời chào kết trang & Bộ đếm lời chúc / Outro & Congrats Counter ---
   outro: {
-    message: "Gửi hai bạn, từ [TÊN CỦA BẠN], với tất cả yêu thương (và một chút đùa dai).",
+    message: "Gửi hai bạn, từ một người bạn thân, với tất cả yêu thương (và một chút đùa dai).",
     buttonLabel: "Chúc mừng!",
     counterLabel: "lượt chúc mừng",
   },

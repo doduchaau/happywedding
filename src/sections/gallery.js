@@ -98,31 +98,39 @@ export function initGallerySection(config) {
     }
   });
 
-  // Setup Pinned Horizontal Scroll on Desktop
+  // Setup Pinned Horizontal Scroll on Desktop (matchMedia + teardown on resize)
   const trackWrapper = document.getElementById('gallery-track-wrapper');
   const track = document.getElementById('gallery-track');
   const section = document.getElementById('gallery-section');
 
-  const isDesktop = window.innerWidth > 768;
+  if (track && section) {
+    const mm = gsap.matchMedia();
+    mm.add('(min-width: 769px) and (prefers-reduced-motion: no-preference)', () => {
+      const distance = () => Math.max(0, track.scrollWidth - window.innerWidth + 120);
+      if (distance() <= 0) return () => {};
 
-  if (isDesktop && !isReducedMotion() && track) {
-    const scrollDistance = track.scrollWidth - window.innerWidth + 120;
-
-    if (scrollDistance > 0) {
-      gsap.to(track, {
-        x: -scrollDistance,
+      const tween = gsap.to(track, {
+        x: () => -distance(),
         ease: 'none',
         scrollTrigger: {
           trigger: section,
           start: 'top 8%',
-          end: () => `+=${scrollDistance * 1.25}`,
+          end: () => `+=${distance() * 1.25}`,
           scrub: 1,
           pin: true,
           anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       });
-    }
+
+      return () => {
+        if (tween.scrollTrigger) {
+          tween.scrollTrigger.kill();
+        }
+        tween.kill();
+        gsap.set(track, { x: 0 });
+      };
+    });
   }
 
   // Setup Cinematic Lightbox
@@ -148,14 +156,19 @@ export function initGallerySection(config) {
   function openLightbox(index) {
     showPhoto(index);
     lightbox?.classList.add('is-open');
-    document.body.classList.add('scroll-locked');
+    // Dùng class riêng 'modal-open' thay vì 'scroll-locked' (thuộc preloader/intro),
+    // tránh việc mở lightbox rồi đóng lại vô tình mở khoá scroll của intro.
+    document.body.classList.add('modal-open');
+    window.dispatchEvent(new CustomEvent('app:modal-open'));
     closeBtn?.focus();
     window.addEventListener('keydown', onKeyDown);
   }
 
   function closeLightbox() {
-    lightbox?.classList.remove('is-open');
-    document.body.classList.remove('scroll-locked');
+    if (!lightbox?.classList.contains('is-open')) return;
+    lightbox.classList.remove('is-open');
+    document.body.classList.remove('modal-open');
+    window.dispatchEvent(new CustomEvent('app:modal-close'));
     window.removeEventListener('keydown', onKeyDown);
   }
 

@@ -9,7 +9,16 @@ import { isReducedMotion } from '../utils/motion.js';
 
 export function initCustomCursor() {
   const isFinePointer = window.matchMedia('(pointer: fine)').matches;
-  if (!isFinePointer || isReducedMotion()) return () => {};
+  const noHover = window.matchMedia('(hover: none)').matches;
+  if (!isFinePointer || noHover || isReducedMotion()) {
+    // Bắt buộc: nếu không tạo cursor custom thì PHẢI bật lại con trỏ chuột
+    // mặc định (CSS body:not(.no-custom-cursor){cursor:none} sẽ ẩn nó đi).
+    document.body.classList.add('no-custom-cursor');
+    return () => {};
+  }
+
+  // Sau khi tạo cursor custom thành công thì bật hiệu ứng cursor:none
+  document.body.classList.remove('no-custom-cursor');
 
   // Remove existing cursor elements if any
   const existing = document.getElementById('editorial-cursor-container');
@@ -140,6 +149,8 @@ export function initCustomCursor() {
     window.removeEventListener('mouseup', onMouseUp);
     document.removeEventListener('mouseleave', onMouseLeave);
     container.remove();
+    // Khi cleanup → bật lại con trỏ mặc định
+    document.body.classList.add('no-custom-cursor');
   };
 }
 
@@ -148,7 +159,8 @@ export function initCustomCursor() {
  */
 export function initMagneticElements() {
   const isFinePointer = window.matchMedia('(pointer: fine)').matches;
-  if (!isFinePointer || isReducedMotion()) return;
+  const noHover = window.matchMedia('(hover: none)').matches;
+  if (!isFinePointer || noHover || isReducedMotion()) return;
 
   const magnetics = document.querySelectorAll('.btn-magnetic, .btn-pill, .music-toggle-btn');
 

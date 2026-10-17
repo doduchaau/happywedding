@@ -1,3 +1,20 @@
+/* ==========================================================================
+   RESPONSIVE VIEWPORT HEIGHT HELPERS
+   dvh = dynamic viewport height (correct on mobile when browser chrome hides)
+   svh = small viewport height (always visible, no chrome)
+   lvh = large viewport height (chrome fully retracted)
+   ========================================================================== */
+:root {
+  --vh-fallback: 1vh;
+  --vh-dynamic: 1dvh;
+  --vh-small: 1svh;
+  --vh-large: 1lvh;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -20,12 +37,36 @@ body {
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
+  min-height: 100svh;
+  overflow-wrap: break-word;
+  word-break: break-word;
   transition: background-color 1s var(--ease-editorial), color 1s var(--ease-editorial);
+}
+
+/* Landscape phones & short screens: prevent trapped single-screen scroll */
+@media (max-height: 500px) and (orientation: landscape) {
+  body {
+    min-height: auto;
+  }
 }
 
 body.scroll-locked {
   overflow: hidden !important;
   height: 100vh !important;
+  height: 100dvh !important;
+}
+
+/* Modal (lightbox / capsule) — khoá cuộn mà KHÔNG phá layout intro */
+body.modal-open {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
+/* Khi modal mở mà intro/preloader vẫn đang chạy, giữ nguyên chiều cao khoá */
+body.scroll-locked.modal-open {
+  height: 100vh !important;
+  height: 100dvh !important;
 }
 
 /* ==========================================================================
@@ -44,11 +85,11 @@ body.scroll-locked {
   pointer-events: none;
 }
 
-/* Fixed Slim Chapter Indicator */
+/* Fixed Slim Chapter Indicator - responsive & safe-area aware */
 .chapter-nav-indicator {
   position: fixed;
-  top: 1.25rem;
-  left: 1.75rem;
+  top: calc(1.25rem + var(--safe-top));
+  left: calc(1.75rem + var(--safe-left));
   z-index: 998;
   display: flex;
   align-items: center;
@@ -62,6 +103,35 @@ body.scroll-locked {
   pointer-events: none;
   opacity: 0.88;
   transition: color 0.8s var(--ease-editorial);
+  max-width: min(22rem, calc(100vw - 8rem));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .chapter-nav-indicator {
+    top: calc(0.75rem + var(--safe-top));
+    left: calc(1rem + var(--safe-left));
+    gap: 0.5rem;
+    font-size: 0.65rem;
+    max-width: calc(100vw - 6rem);
+  }
+
+  .chapter-nav-numeral {
+    font-size: 0.95rem;
+  }
+
+  .chapter-nav-divider {
+    width: 16px;
+  }
+}
+
+/* Hide on very narrow screens to avoid clutter */
+@media (max-width: 360px) {
+  .chapter-nav-title {
+    display: none;
+  }
 }
 
 .chapter-nav-numeral {
@@ -477,7 +547,7 @@ body.scroll-locked {
    ========================================================================== */
 .toast-container {
   position: fixed;
-  top: 1.75rem;
+  top: calc(1.75rem + var(--safe-top));
   left: 50%;
   transform: translateX(-50%);
   display: flex;

@@ -273,6 +273,9 @@ export async function initWishPitSection(config) {
             sfx.sparkleShimmer();
             modalText.textContent = `“${item.fullWish || item.word}”`;
             modal?.classList.add('is-open');
+            document.body.classList.add('modal-open');
+            window.dispatchEvent(new CustomEvent('app:modal-open'));
+            modalClose?.focus();
             break;
           }
         }
@@ -280,7 +283,18 @@ export async function initWishPitSection(config) {
     }
   });
 
-  const closeModal = () => modal?.classList.remove('is-open');
+  const closeModal = () => {
+    if (!modal?.classList.contains('is-open')) return;
+    modal.classList.remove('is-open');
+    document.body.classList.remove('modal-open');
+    window.dispatchEvent(new CustomEvent('app:modal-close'));
+  };
+
+  // Đóng bằng phím Esc
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
   modalClose?.addEventListener('click', closeModal);
   modalConfirm?.addEventListener('click', closeModal);
   modal?.addEventListener('click', (e) => {
