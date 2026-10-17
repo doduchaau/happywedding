@@ -17,9 +17,9 @@ export function initHeroSection(config) {
   const marqueeItems = config.marquee || ['THÚY HIỀN', 'TRUNG KIÊN', 'CHÚC MỪNG HẠNH PHÚC', 'TRĂM NĂM HẢO HỢP'];
   const photos = config.photos || [];
 
-  const photo1 = photos[0]?.src || '/photos/photo-1.jpg';
-  const photo2 = photos[1]?.src || '/photos/photo-2.jpg';
-  const photo3 = photos[2]?.src || '/photos/photo-3.jpg';
+  const photo1 = photos[0]?.src || './photos/photo-1.jpg';
+  const photo2 = photos[1]?.src || './photos/photo-2.jpg';
+  const photo3 = photos[2]?.src || './photos/photo-3.jpg';
 
   container.innerHTML = `
     <section class="hero-section" id="hero-section">

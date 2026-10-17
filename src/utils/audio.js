@@ -16,7 +16,7 @@ class AudioManager {
   }
 
   init(config = {}) {
-    const src = config.src || '/music/nhac.mp3';
+    const src = config.src || './music/nhac.mp3';
     this.targetVolume = typeof config.volume === 'number' ? config.volume : 0.5;
     const loop = config.loop !== false;
 

@@ -10,8 +10,8 @@ export function initVideoSection(config) {
   }
 
   const title = config.video.title || 'Thước phim kỷ niệm gửi tặng hai bạn';
-  const src = config.video.src || '/video/loi-chuc.mp4';
-  const poster = config.video.poster || '/photos/photo-1.jpg';
+  const src = config.video.src || './video/loi-chuc.mp4';
+  const poster = config.video.poster || './photos/photo-1.jpg';
 
   container.innerHTML = `
     <section class="video-section" id="video-section">

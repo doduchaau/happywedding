@@ -127,32 +127,32 @@ export const CONFIG = {
   // --- Bộ sưu tập 6 bức ảnh khoảnh khắc / 6 Moments Photo Gallery ---
   photos: [
     {
-      src: "/photos/photo-1.jpg",
+      src: "./photos/photo-1.jpg",
       caption: "Lúc chưa biết mình sắp bị 'trói' trọn đời.",
       orientation: "portrait",
     },
     {
-      src: "/photos/photo-2.jpg",
+      src: "./photos/photo-2.jpg",
       caption: "Nụ cười của người vừa tìm thấy cả thế giới.",
       orientation: "portrait",
     },
     {
-      src: "/photos/photo-3.jpg",
+      src: "./photos/photo-3.jpg",
       caption: "Bằng chứng không thể chối cãi: Hai người này sinh ra là dành cho nhau.",
       orientation: "portrait",
     },
     {
-      src: "/photos/photo-4.jpg",
+      src: "./photos/photo-4.jpg",
       caption: "Khoảnh khắc nhí nhố đáng yêu, bên nhau là ngập tràn tiếng cười.",
       orientation: "portrait",
     },
     {
-      src: "/photos/photo-5.jpg",
+      src: "./photos/photo-5.jpg",
       caption: "Nét duyên truyền thống trong bộ lễ phục Nhật Bình & Ngũ Thân rực rỡ.",
       orientation: "portrait",
     },
     {
-      src: "/photos/photo-6.jpg",
+      src: "./photos/photo-6.jpg",
       caption: "Trọn đời gắn kết, trăm năm hạnh phúc vẹn tròn.",
       orientation: "portrait",
     },
@@ -225,16 +225,16 @@ export const CONFIG = {
     title: "Khai mở khoảnh khắc dát vàng",
     subtitle: "Dùng ngón tay hoặc chuột cào nhẹ lớp nhũ vàng champagne để mở từng ký ức",
     items: [
-      { photo: "/photos/photo-1.jpg", caption: "Giây phút chưa biết mình sắp thuộc về nhau trọn đời" },
-      { photo: "/photos/photo-2.jpg", caption: "Nụ cười của người vừa tìm thấy cả thế giới của riêng mình" },
-      { photo: "/photos/photo-3.jpg", caption: "Bằng chứng không thể chối cãi: Hai người sinh ra là dành cho nhau" },
-      { photo: "/photos/photo-4.jpg", caption: "Chụp lén nhưng đẹp tựa thước phim điện ảnh" },
-      { photo: "/photos/photo-5.jpg", caption: "Cặp đôi mà bất kỳ ai ngắm nhìn cũng muốn mỉm cười" },
-      { photo: "/photos/photo-6.jpg", caption: "Khoảnh khắc ngọt ngào hơn tất cả những bản tình ca" },
+      { photo: "./photos/photo-1.jpg", caption: "Giây phút chưa biết mình sắp thuộc về nhau trọn đời" },
+      { photo: "./photos/photo-2.jpg", caption: "Nụ cười của người vừa tìm thấy cả thế giới của riêng mình" },
+      { photo: "./photos/photo-3.jpg", caption: "Bằng chứng không thể chối cãi: Hai người sinh ra là dành cho nhau" },
+      { photo: "./photos/photo-4.jpg", caption: "Chụp lén nhưng đẹp tựa thước phim điện ảnh" },
+      { photo: "./photos/photo-5.jpg", caption: "Cặp đôi mà bất kỳ ai ngắm nhìn cũng muốn mỉm cười" },
+      { photo: "./photos/photo-6.jpg", caption: "Khoảnh khắc ngọt ngào hơn tất cả những bản tình ca" },
     ],
     // Khoảnh khắc lắng đọng, chân thành duy nhất gần cuối trang / The ONE sincere moment
     finale: {
-      photo: "/photos/photo-6.jpg",
+      photo: "./photos/photo-6.jpg",
       message: "Chúc hai bạn một đời bình an, cùng nhau đi qua mọi phong ba bão táp, và mãi giữ chặt bàn tay nhau trọn vẹn như hôm nay.",
     },
   },
@@ -242,8 +242,8 @@ export const CONFIG = {
   // --- Tùy chọn video điện ảnh / Cinema Video Message Option ---
   video: {
     show: false, // true = hiện video, false = ẩn / true = show video, false = hide
-    src: "/video/loi-chuc.mp4",
-    poster: "/photos/photo-1.jpg",
+    src: "./video/loi-chuc.mp4",
+    poster: "./photos/photo-1.jpg",
     title: "Thước phim kỷ niệm gửi tặng hai bạn",
   },
 
@@ -274,7 +274,7 @@ export const CONFIG = {
 
   // --- Thiết lập nhạc nền đám cưới / Background Audio Settings ---
   music: {
-    src: "/music/nhac.mp3", // File nhạc trong public/music / Audio file in public/music
+    src: "./music/nhac.mp3", // File nhạc trong public/music / Audio file in public/music
     volume: 0.5,            // Âm lượng 0.0 - 1.0 / Volume level 0.0 - 1.0
     loop: true,             // Lặp lại bài hát / Loop playback
   },

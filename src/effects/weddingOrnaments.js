@@ -32,8 +32,8 @@ export function getXiSvg(size = 48, color = 'currentColor') {
  * Dùng <picture> để ưu tiên WebP (nhẹ hơn ~50%) và fallback PNG cho trình duyệt cũ.
  */
 export function getSwansHeartSvg({ isWhite = false } = {}) {
-  const webp = isWhite ? '/photos/swans-pair-white.webp' : '/photos/swans-pair.webp';
-  const png = isWhite ? '/photos/swans-pair-white.png' : '/photos/swans-pair.png';
+  const webp = isWhite ? './photos/swans-pair-white.webp' : './photos/swans-pair.webp';
+  const png = isWhite ? './photos/swans-pair-white.png' : './photos/swans-pair.png';
   return `
     <picture class="swans-heart-picture">
       <source srcset="${webp}" type="image/webp" />
